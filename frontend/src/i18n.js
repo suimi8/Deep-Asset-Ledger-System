@@ -175,6 +175,8 @@ const resources = {
                 "currency": "Currency",
                 "language": "Language",
                 "preview": "Preview",
+                "update_success": "Settings updated!",
+                "update_failed": "Update failed",
                 "currencies": {
                     "USD": "US Dollar",
                     "CNY": "Chinese Yuan",
@@ -378,6 +380,8 @@ const resources = {
                 "currency": "货币符号",
                 "language": "语言",
                 "preview": "预览",
+                "update_success": "系统设置已更新！",
+                "update_failed": "更新失败",
                 "currencies": {
                     "USD": "美元",
                     "CNY": "人民币",
@@ -578,6 +582,8 @@ const resources = {
                 "currency": "貨幣符號",
                 "language": "語言",
                 "preview": "預覽",
+                "update_success": "系統設置已更新！",
+                "update_failed": "更新失敗",
                 "currencies": {
                     "USD": "美元",
                     "CNY": "人民幣",

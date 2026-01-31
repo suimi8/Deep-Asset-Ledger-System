@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate, Navigate } from "react-router-dom";
-import { LayoutDashboard, TrendingUp, Wallet, Settings as SettingsIcon, Globe, ChevronRight, LogOut, LogIn, UserPlus, Activity } from "lucide-react";
+import { LayoutDashboard, TrendingUp, Wallet, Settings as SettingsIcon, Globe, ChevronRight, LogOut, LogIn, UserPlus } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
@@ -10,7 +10,6 @@ import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
-import Diagnosis from "./pages/Diagnosis";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 
 function PrivateRoute({ children }) {
@@ -66,7 +65,6 @@ function Layout({ children }) {
           <p className="px-4 py-2 text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">{t('app.nav.menu') || 'Menu'}</p>
           <NavItem to="/" icon={<LayoutDashboard size={18} />} label={t('app.nav.overview')} active={location.pathname === "/"} />
           <NavItem to="/stocks" icon={<TrendingUp size={18} />} label={t('app.nav.stocks')} active={location.pathname.startsWith("/stocks")} />
-          <NavItem to="/diagnosis" icon={<Activity size={18} />} label={t('diagnosis.title')} active={location.pathname === "/diagnosis"} />
           <NavItem to="/transactions" icon={<Wallet size={18} />} label={t('app.nav.transactions')} active={location.pathname === "/transactions"} />
         </nav>
 
@@ -185,7 +183,6 @@ function App() {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/stocks" element={<StockList />} />
                   <Route path="/stocks/:id" element={<StockDetail />} />
-                  <Route path="/diagnosis" element={<Diagnosis />} />
                   <Route path="/transactions" element={<div className="text-xl font-bold p-20 glass-card rounded-3xl text-center">{t('common.coming_soon')}</div>} />
                   <Route path="/settings" element={<Settings />} />
                 </Routes>
