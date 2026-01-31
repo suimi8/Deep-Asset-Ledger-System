@@ -1,0 +1,10 @@
+{
+    "$schema": "https://schema.zeabur.com/v1/zbpack.json",
+    "build_command": null,
+    "start_command": null,
+    "watch_paths": null,
+    "dockerfile": {
+        "enabled": true,
+        "path": "Dockerfile"
+    }
+}

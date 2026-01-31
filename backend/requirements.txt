@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlmodel
+alembic
+pandas
+pydantic
+python-multipart
+requests
+apscheduler
+akshare
+yfinance
+pyjwt
+python-jose[cryptography]
+email-validator
+bcrypt
+pycryptodome
+python-dotenv
