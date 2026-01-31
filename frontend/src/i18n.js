@@ -177,6 +177,10 @@ const resources = {
                 "preview": "Preview",
                 "update_success": "Settings updated!",
                 "update_failed": "Update failed",
+                "api_config": "Global API Configuration",
+                "connection_test": "Connection Test",
+                "wait_for_test": "Wait for analysis...",
+                "set_master_key": "Set/Update Master API Key",
                 "currencies": {
                     "USD": "US Dollar",
                     "CNY": "Chinese Yuan",
@@ -382,6 +386,10 @@ const resources = {
                 "preview": "预览",
                 "update_success": "系统设置已更新！",
                 "update_failed": "更新失败",
+                "api_config": "全局 API 配置",
+                "connection_test": "连接性测试",
+                "wait_for_test": "等待测试...",
+                "set_master_key": "设置/更新主 API 密钥",
                 "currencies": {
                     "USD": "美元",
                     "CNY": "人民币",
@@ -584,6 +592,10 @@ const resources = {
                 "preview": "預覽",
                 "update_success": "系統設置已更新！",
                 "update_failed": "更新失敗",
+                "api_config": "全局 API 配置",
+                "connection_test": "連接性測試",
+                "wait_for_test": "等待測試...",
+                "set_master_key": "設置/更新主 API 密鑰",
                 "currencies": {
                     "USD": "美元",
                     "CNY": "人民幣",

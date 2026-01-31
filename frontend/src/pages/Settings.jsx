@@ -125,7 +125,7 @@ export default function Settings() {
                             <div className="p-2 bg-blue-500/10 rounded-lg">
                                 <Globe size={18} className="text-blue-400" />
                             </div>
-                            <h3 className="text-xs font-black text-gray-500 uppercase tracking-[0.2em]">Global API Configuration</h3>
+                            <h3 className="text-xs font-black text-gray-500 uppercase tracking-[0.2em]">{t('settings.api_config')}</h3>
                         </div>
                         <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${isConfigured ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
                             {isConfigured ? <CheckCircle size={10} /> : <XCircle size={10} />}
@@ -157,7 +157,7 @@ export default function Settings() {
                                             setMasterApiKey(e.target.value);
                                             localStorage.setItem('last_saved_key', e.target.value);
                                         }}
-                                        placeholder="Set/Update Master API Key"
+                                        placeholder={t('settings.set_master_key')}
                                         className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white font-mono text-sm placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all hover:bg-white/10"
                                     />
                                 </div>
@@ -180,7 +180,7 @@ export default function Settings() {
                         <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 space-y-6">
                             <h4 className="flex items-center gap-2 text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-4">
                                 <Activity size={12} className="text-blue-400" />
-                                Connection Test
+                                {t('settings.connection_test')}
                             </h4>
 
                             <div className="flex gap-3">
@@ -200,7 +200,7 @@ export default function Settings() {
                                     className="bg-white/10 hover:bg-white/20 disabled:opacity-30 text-white px-6 rounded-xl text-xs font-bold transition-all flex items-center gap-2"
                                 >
                                     {diagnosing ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
-                                    Run Test
+                                    {t('diagnosis.btn_diagnose')}
                                 </button>
                             </div>
 
@@ -218,11 +218,11 @@ export default function Settings() {
                                     </div>
                                     <div className="grid grid-cols-2 gap-4 text-[11px]">
                                         <div>
-                                            <span className="text-gray-500 uppercase font-black block mb-1">Market Cap</span>
+                                            <span className="text-gray-500 uppercase font-black block mb-1">{t('diagnosis.info.market_cap')}</span>
                                             <span className="text-white font-bold">{testResult.details.total_market_cap || '-'}</span>
                                         </div>
                                         <div>
-                                            <span className="text-gray-500 uppercase font-black block mb-1">Industry</span>
+                                            <span className="text-gray-500 uppercase font-black block mb-1">{t('diagnosis.info.industry')}</span>
                                             <span className="text-white font-bold truncate block">{testResult.details.industry || '-'}</span>
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@ export default function Settings() {
 
                             {!testResult && !diagnosing && (
                                 <div className="h-24 flex items-center justify-center border border-dashed border-white/5 rounded-2xl opacity-20">
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Wait for test...</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{t('settings.wait_for_test')}</span>
                                 </div>
                             )}
                         </div>
