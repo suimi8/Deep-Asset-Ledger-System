@@ -129,7 +129,7 @@ export default function Settings() {
                         </div>
                         <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${isConfigured ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
                             {isConfigured ? <CheckCircle size={10} /> : <XCircle size={10} />}
-                            {isConfigured ? 'Active' : 'Key Missing'}
+                            {isConfigured ? t('settings.status_active') : t('settings.status_missing')}
                         </div>
                     </div>
 
@@ -200,7 +200,7 @@ export default function Settings() {
                                     className="bg-white/10 hover:bg-white/20 disabled:opacity-30 text-white px-6 rounded-xl text-xs font-bold transition-all flex items-center gap-2"
                                 >
                                     {diagnosing ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
-                                    {t('diagnosis.btn_diagnose')}
+                                    {t('settings.run_test')}
                                 </button>
                             </div>
 

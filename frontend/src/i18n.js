@@ -181,6 +181,9 @@ const resources = {
                 "connection_test": "Connection Test",
                 "wait_for_test": "Wait for analysis...",
                 "set_master_key": "Set/Update Master API Key",
+                "status_active": "Active",
+                "status_missing": "Key Missing",
+                "run_test": "Run Test",
                 "currencies": {
                     "USD": "US Dollar",
                     "CNY": "Chinese Yuan",
@@ -390,6 +393,9 @@ const resources = {
                 "connection_test": "连接性测试",
                 "wait_for_test": "等待测试...",
                 "set_master_key": "设置/更新主 API 密钥",
+                "status_active": "已配置",
+                "status_missing": "未配置",
+                "run_test": "开始测试",
                 "currencies": {
                     "USD": "美元",
                     "CNY": "人民币",
@@ -596,6 +602,9 @@ const resources = {
                 "connection_test": "連接性測試",
                 "wait_for_test": "等待測試...",
                 "set_master_key": "設置/更新主 API 密鑰",
+                "status_active": "已配置",
+                "status_missing": "未配置",
+                "run_test": "開始測試",
                 "currencies": {
                     "USD": "美元",
                     "CNY": "人民幣",
