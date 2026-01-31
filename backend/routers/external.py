@@ -20,8 +20,8 @@ async def get_stock_diagnosis(
     提供外部调用的股票解析/诊断服务
     """
     # 按照优先级检查密钥: 1. 数据库 2. 环境变量
-    config = session.exec(select(SystemConfig).where(SystemConfig.key == "EXTERNAL_API_KEY")).first()
-    master_key = config.value if config else os.getenv("EXTERNAL_API_KEY")
+    config_key = session.exec(select(SystemConfig).where(SystemConfig.key == "EXTERNAL_API_KEY")).first()
+    master_key = config_key.value if config_key else os.getenv("EXTERNAL_API_KEY")
     
     if not master_key:
         raise HTTPException(
@@ -43,37 +43,46 @@ async def get_stock_diagnosis(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.post("/config/api-key")
-async def set_api_key(
+@router.post("/config/api-settings")
+async def set_api_settings(
     data: dict, 
     current_user: User = Depends(get_current_user), 
     session: Session = Depends(get_session)
 ):
     """
-    从 UI 设置全局 API 密钥 (需要登录)
+    从 UI 设置全局 API 地址和密钥
     """
-    new_key = data.get("apiKey")
-    if not new_key:
-        raise HTTPException(status_code=400, detail="Key cannot be empty")
-        
-    config = session.exec(select(SystemConfig).where(SystemConfig.key == "EXTERNAL_API_KEY")).first()
-    if config:
-        config.value = new_key
-        config.updated_at = datetime.utcnow()
-    else:
-        config = SystemConfig(key="EXTERNAL_API_KEY", value=new_key)
-        
-    session.add(config)
+    settings = {
+        "EXTERNAL_API_KEY": data.get("apiKey"),
+        "EXTERNAL_API_URL": data.get("apiUrl")
+    }
+    
+    for key, value in settings.items():
+        if value is not None:
+            config = session.exec(select(SystemConfig).where(SystemConfig.key == key)).first()
+            if config:
+                config.value = value
+                config.updated_at = datetime.utcnow()
+            else:
+                config = SystemConfig(key=key, value=value)
+            session.add(config)
+            
     session.commit()
-    return {"message": "API Key updated successfully"}
+    return {"message": "API Settings updated successfully"}
 
-@router.get("/config/api-key")
-async def get_api_key_status(
+@router.get("/config/api-settings")
+async def get_api_settings(
     current_user: User = Depends(get_current_user), 
     session: Session = Depends(get_session)
 ):
     """
-    检查 API 密钥是否已配置
+    获取当前 API 配置状态（出于安全原因内容可能部分隐藏）
     """
-    config = session.exec(select(SystemConfig).where(SystemConfig.key == "EXTERNAL_API_KEY")).first()
-    return {"isConfigured": config is not None or os.getenv("EXTERNAL_API_KEY") is not None}
+    config_key = session.exec(select(SystemConfig).where(SystemConfig.key == "EXTERNAL_API_KEY")).first()
+    config_url = session.exec(select(SystemConfig).where(SystemConfig.key == "EXTERNAL_API_URL")).first()
+    
+    return {
+        "isConfigured": config_key is not None or os.getenv("EXTERNAL_API_KEY") is not None,
+        "apiUrl": config_url.value if config_url else os.getenv("EXTERNAL_API_URL", ""),
+        "hasKey": config_key is not None
+    }
